@@ -1,0 +1,42 @@
+駅データ.jp terms of use (利用規約)
+https://ekidata.jp/agreement.php
+last revised 2025-06-04 (改定日：2025年6月4日), read on 2026-10-05
+
+This is not an open licence. Everything under this directory comes from the
+free data of 駅データ.jp (https://ekidata.jp/), provided by Value and Vision
+Co., Ltd. (株式会社バリューアンドビジョン), and is subject to the site's terms.
+The download needs a free member login; no credential is included here.
+
+In short (the Japanese text of Articles 4 to 7 is quoted in README.md beside
+this file): the data may be used for any purpose, commercial or not, without
+contacting the company, except the uses Article 7 prohibits (Article 4).
+Attribution is not required; credit or a link to the site is welcome. The
+data may be modified (Article 5). Modified or unmodified, it may be provided
+to third parties, but unmodified data only free of charge; this refers to the
+data on its own, which may be built into a paid system (Article 6). The
+company accepts no liability for damage from use, modification or provision.
+Article 7 prohibits uses that encourage crime; obscene or otherwise offensive
+uses; uses that may mislead consumers; infringing third parties' property,
+privacy or reputation; defaming the company or its service or hindering its
+business; and uses that may spread viruses or otherwise harm third parties.
+The company may revise the terms on its site; use after a revision means
+agreement to it.
+
+The files under raw/<version>/ are the site's own CSVs, byte for byte
+(unmodified data, provided here free of charge); MANIFEST.json records their
+URLs, sizes, sha256 and row counts. Whoever passes them on must not charge
+for them.
+
+The Parquet under parquet/<version>/ is modified data, made from those CSVs:
+
+  - columns were typed by name: the codes (company_cd, rr_cd, line_cd,
+    station_cd, station_g_cd, pref_cd, station_cd1, station_cd2) and
+    company_type, line_type, e_status, e_sort and zoom as integers, lon and
+    lat as floats; every other column is the text of the CSV
+  - empty fields became null
+  - stations got a point geometry (WGS 84, OGC:CRS84) from lon and lat
+  - no other value was changed, and rows keep the order of the CSV
+
+The code that fetches, checks and converts is in the repository this dataset
+was built from (https://github.com/yuiseki/ekidata-jp) and does not apply
+here.

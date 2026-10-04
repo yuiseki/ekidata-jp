@@ -51,8 +51,24 @@ reads the credentials from the environment variables `EKI_DATA_EMAIL` and
 set -a; . ~/Workspaces/.env; set +a
 uv run python scripts/01_download.py   # fetch into data/raw/<fetch date>/
 uv run python scripts/02_verify.py     # re-hash and count CSV rows against the manifest
-uv run python -m pytest                # unit tests for the page parsing
+uv run python scripts/03_export_parquet.py   # typed Parquet into data/parquet/<version>/
+uv run python scripts/02_verify.py     # again: now also checks every Parquet against its CSV
+uv run python -m pytest                # unit tests for the page parsing and the type rule
+uv run python src/publish.py           # dry run: lists the files and their total size
+uv run python src/publish.py --push    # upload to https://huggingface.co/datasets/yuiseki/ekidata-jp
 ```
+
+The export writes one Parquet per CSV, named by its table and the date in its
+file name (`station20260731free.csv` becomes
+`data/parquet/<version>/station.2026-07-31.parquet`; `pref.csv` becomes
+`pref.parquet`). Column types come from the column names (codes and small
+integer fields INTEGER, `lon` and `lat` DOUBLE, the rest text); a value that
+does not fit stops the export. Stations get a point geometry from `lon` and
+`lat`. `publish.py` refuses to upload unless `data/README.md` declares every
+Parquet as a subset, and the latest edition of each table under the table's
+name, and every raw file still has the sha256 of its manifest. It uploads
+`data/README.md` (the dataset card), `data/LICENSE`, `data/provenance.yaml`,
+the Parquet and the raw files unchanged.
 
 Requests are sequential and at least 1.5 seconds apart. Running the download
 again on the same day fetches nothing that is already in the manifest.
@@ -61,9 +77,13 @@ again on the same day fetches nothing that is already in the manifest.
 
 ```
 scripts/01_download.py    log in, read the download page, fetch the free files
-scripts/02_verify.py      check files against MANIFEST.json
-tests/                    parsing tests; tests/fixtures/ holds trimmed pages
+scripts/02_verify.py      check files against MANIFEST.json, and the Parquet against the CSVs
+scripts/03_export_parquet.py  typed Parquet (GeoParquet for stations)
+src/publish.py            dry run, or --push to the Hugging Face Hub
+tests/                    parsing and type-rule tests; tests/fixtures/ holds trimmed pages
+data/README.md            the dataset card; data/LICENSE and data/provenance.yaml beside it
 data/raw/<YYYY-MM-DD>/    the CSV files as served, and MANIFEST.json (not in git)
+data/parquet/<YYYY-MM-DD>/  one Parquet per CSV (not in git)
 ```
 
 `MANIFEST.json` holds the latest change note date on the page and, for each

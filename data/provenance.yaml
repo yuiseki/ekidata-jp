@@ -1,0 +1,76 @@
+# Where this data comes from and what was done to it.
+
+source:
+  name: 駅データ.jp (ekidata.jp), free data
+  publisher: 株式会社バリューアンドビジョン (Value and Vision Co., Ltd.)
+  site: https://ekidata.jp/
+  download_page: https://ekidata.jp/dl/?p=1 (needs a free member login; no credential is stored here)
+  specification: https://ekidata.jp/doc/
+  licence:
+    terms: https://ekidata.jp/agreement.php
+    revised: 2025-06-04
+    read: 2026-10-05
+    card_id: other (license_name ekidata-jp-terms)
+    use: any purpose, commercial or not, except Article 7 (Article 4)
+    attribution_required: false (welcome)
+    modification: allowed (Article 5)
+    redistribution: allowed, modified or not; unmodified data only free of charge (Article 6)
+    prohibited: Article 7, (1) to (6)
+  datum: 世界測地系 per the station specification; read as WGS 84 (OGC:CRS84)
+
+versions:
+  note: |
+    The version is the fetch date in Japan time. Each dated file on the
+    download page is a subset named <table>.<YYYY-MM-DD> from the date in
+    its file name; the latest of each table is also the subset <table>.
+    pref.csv has no date and is the subset pref. Links commented out in the
+    page's HTML (among them line and station editions of 2026-09-14, and
+    older editions) are not shown to users and were not taken. The paid
+    tier is not taken.
+  "2026-10-05":
+    source: https://ekidata.jp/dl/?p=1
+    latest_change_note: 2026-09-14
+    files:
+      company20250523.csv: {subset: company.2025-05-23, url: "https://ekidata.jp/dl/f.php?t=1&d=20250523", page_category: 事業者データ, page_date: 2025-05-23, bytes: 23339, sha256: "7cc4cdd098bc6f38e721d205ac3afb514e9a8d30a8885ac809c686a5c1283c3b", rows: 174, encoding: utf-8}
+      company20250529.csv: {subset: company.2025-05-29, url: "https://ekidata.jp/dl/f.php?t=1&d=20250529", page_category: 事業者データ, page_date: 2025-05-29, bytes: 23546, sha256: "4ae8eebb482b9db7a869564e488f729c2f4e56465768f0602d39ef6a360bbe1c", rows: 176, encoding: utf-8}
+      company20250604.csv: {subset: company.2025-06-04, url: "https://ekidata.jp/dl/f.php?t=1&d=20250604", page_category: 事業者データ, page_date: 2025-06-04, bytes: 23285, sha256: "eca9cf40212336a61dca2f25cd45710c07373cfa009691c9c73ecd6d06602d66", rows: 174, encoding: utf-8}
+      company20251015.csv: {subset: company.2025-10-15, url: "https://ekidata.jp/dl/f.php?t=1&d=20251015", page_category: 事業者データ, page_date: 2025-10-15, bytes: 23270, sha256: "7e77a871bad8887327c11e24b839acb777bcf1a157fb4c20a9a564d4ccce29c6", rows: 174, encoding: utf-8}
+      company20260409.csv: {subset: company.2026-04-09, url: "https://ekidata.jp/dl/f.php?t=1&d=20260409", page_category: 事業者データ, page_date: 2026-04-09, bytes: 23428, sha256: "41233afbc7dc73bdd71806ff61fb2db2dda9ecefcda88a2d415c7fa0a5b8d5b9", rows: 175, encoding: utf-8}
+      join20250903.csv: {subset: join.2025-09-03, url: "https://ekidata.jp/dl/f.php?t=6&d=20250903", page_category: 接続駅データ, page_date: 2025-09-03, bytes: 223354, sha256: "904d4001f91c7d14558dbe55eef8ccb7678cf7bd9003e8d4a1f4d388be5f3c4f", rows: 10172, encoding: utf-8}
+      join20250916.csv: {subset: join.2025-09-16, url: "https://ekidata.jp/dl/f.php?t=6&d=20250916", page_category: 接続駅データ, page_date: 2025-09-16, bytes: 223376, sha256: "cf8db7cc655aabfe2781f60aa2b4ec51d9b7c6d34ca8c6243a88314799be2b41", rows: 10173, encoding: utf-8}
+      join20260226.csv: {subset: join.2026-02-26, url: "https://ekidata.jp/dl/f.php?t=6&d=20260226", page_category: 接続駅データ, page_date: 2026-02-26, bytes: 223266, sha256: "9eb92b139070ae778799a827860aeda812d4b6f60a02e3a002e830ea7e613c37", rows: 10168, encoding: utf-8}
+      join20260409.csv: {subset: join.2026-04-09, url: "https://ekidata.jp/dl/f.php?t=6&d=20260409", page_category: 接続駅データ, page_date: 2026-04-09, bytes: 223266, sha256: "aed79e036bc30b7195f2338f5c77bbaffa68c7d1cd1fe678096473cb7a334c70", rows: 10168, encoding: utf-8}
+      join20260618.csv: {subset: join.2026-06-18, url: "https://ekidata.jp/dl/f.php?t=6&d=20260618", page_category: 接続駅データ, page_date: 2026-06-18, bytes: 223728, sha256: "a26990515cc94b9bc1fdbaf5630efa081f3a81e17a756c11b9858c4dadf1bc9b", rows: 10189, encoding: utf-8}
+      join20260914.csv: {subset: join.2026-09-14, url: "https://ekidata.jp/dl/f.php?t=6&d=20260914", page_category: 接続駅データ, page_date: 2026-09-14, bytes: 223706, sha256: "04d89c96ecc7f8b452d0e8c2c779e83b035d7fed75db85a3b03be1b4ca1a4bcd", rows: 10188, encoding: utf-8}
+      line20250529free.csv: {subset: line.2025-05-29, url: "https://ekidata.jp/dl/f.php?t=3&d=20250529", page_category: 路線データ, page_date: 2025-05-29, bytes: 79552, sha256: "31053c75b0e45dd4c5fde640e95ae7d37c5044393df82c464cdccff9530730c0", rows: 622, encoding: utf-8}
+      line20250604free.csv: {subset: line.2025-06-04, url: "https://ekidata.jp/dl/f.php?t=3&d=20250604", page_category: 路線データ, page_date: 2025-06-04, bytes: 79550, sha256: "cd68a1df81d06cd8d32bcb789a5d405c3b6919169a408510ec6518b3188354a3", rows: 622, encoding: utf-8}
+      line20260323free.csv: {subset: line.2026-03-23, url: "https://ekidata.jp/dl/f.php?t=3&d=20260323", page_category: 路線データ, page_date: 2026-03-23, bytes: 79544, sha256: "3c2d974fc667e2fe926ac8b40d531e658304944a1839ac663ab5db42686cf53e", rows: 622, encoding: utf-8}
+      line20260409free.csv: {subset: line.2026-04-09, url: "https://ekidata.jp/dl/f.php?t=3&d=20260409", page_category: 路線データ, page_date: 2026-04-09, bytes: 79711, sha256: "87ed6d1a3f409c5f0534fa72980b903670424ffa96727bc9a55e19310284f7d0", rows: 623, encoding: utf-8}
+      line20260618free.csv: {subset: line.2026-06-18, url: "https://ekidata.jp/dl/f.php?t=3&d=20260618", page_category: 路線データ, page_date: 2026-06-18, bytes: 79809, sha256: "4671cae35b839b2efd5cb42788816a130a3b0e9859514f7cc41b67827a067850", rows: 624, encoding: utf-8}
+      pref.csv: {subset: pref, url: "https://ekidata.jp/doc/pref.csv", page_category: 都道府県データ, page_date: none, bytes: 641, sha256: "a14693febf08d1724f8c6b305b3deb9cd23c77f3d44573e5d1e4116291dd45ee", rows: 48, encoding: utf-8}
+      station20260409free.csv: {subset: station.2026-04-09, url: "https://ekidata.jp/dl/f.php?t=5&d=20260409", page_category: 駅データ, page_date: 2026-04-09, bytes: 1414999, sha256: "e58e6b3d41eaf28cf7356050fc78dc1da467c5ee369ab979f0de87d45ac5f763", rows: 10943, encoding: utf-8}
+      station20260430free.csv: {subset: station.2026-04-30, url: "https://ekidata.jp/dl/f.php?t=5&d=20260430", page_category: 駅データ, page_date: 2026-04-30, bytes: 1414999, sha256: "5f1a5a7f1d912f7bf1656faf9a403e888a3836c3536479eaff8ce246d3334b8c", rows: 10943, encoding: utf-8}
+      station20260528free.csv: {subset: station.2026-05-28, url: "https://ekidata.jp/dl/f.php?t=5&d=20260528", page_category: 駅データ, page_date: 2026-05-28, bytes: 1414728, sha256: "3cacc56e3e6df794417d93c8002cbdd4776089eb21609b57c17f726c84a0c2a7", rows: 10941, encoding: utf-8}
+      station20260618free.csv: {subset: station.2026-06-18, url: "https://ekidata.jp/dl/f.php?t=5&d=20260618", page_category: 駅データ, page_date: 2026-06-18, bytes: 1417416, sha256: "f881c4c647c6709155e77de5ed23ca17e7a32c03d354d1f30665e5d236c41c8a", rows: 10962, encoding: utf-8}
+      station20260713free.csv: {subset: station.2026-07-13, url: "https://ekidata.jp/dl/f.php?t=5&d=20260713", page_category: 駅データ, page_date: 2026-07-13, bytes: 1417416, sha256: "3d69f3dff86cb78c62ed22029be870bc3beab11d59547a6b978b64dd0c341672", rows: 10962, encoding: utf-8}
+      station20260731free.csv: {subset: station.2026-07-31, url: "https://ekidata.jp/dl/f.php?t=5&d=20260731", page_category: 駅データ, page_date: 2026-07-31, bytes: 1417416, sha256: "0e679ce1a254d78134b0e903ddb0a7449cf688ae7c2637baea8940b34e2af030", rows: 10962, encoding: utf-8}
+
+checked:
+  note: scripts/02_verify.py, with DuckDB 1.5.6, before upload
+  items:
+    - raw files against MANIFEST.json (size, sha256, csv module row count)
+    - one Parquet per CSV and no other
+    - Parquet row count equals the csv module count and the manifest
+    - every value of every row equals the CSV read with the csv module and typed by the same rule, in CSV order
+    - every column of the type its name gives, in CSV order
+    - stations, GeoParquet 1.0.0 Point without crs (OGC:CRS84), every row a point at its lon and lat
+    - a DuckDB without extensions opens every file
+    - no bloom filters
+
+modifications:
+  raw: none. The site's CSVs, byte for byte.
+  parquet:
+    - columns typed by name; codes and small integer fields as INTEGER (every value an integer without leading zeros, else the build stops), lon and lat as DOUBLE, the rest text
+    - empty fields as null
+    - stations, a point geometry from lon and lat
+    - rows in CSV order, written without bloom filters
